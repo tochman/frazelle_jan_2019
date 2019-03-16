@@ -1,4 +1,8 @@
 %h1 The Hub News
+%ul.flex.justify-center
+	-@categories.each do |category|
+		%li.list-reset.p-4.text-lg=link_to category.name.capitalize
+
 - @categories.each do |category|
 	%div{id: dom_id(category)}
 		%p= category.name.capitalize
