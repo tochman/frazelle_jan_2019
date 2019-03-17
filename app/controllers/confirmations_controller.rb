@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# comment
 
 class ConfirmationsController < Devise::ConfirmationsController
 	def show
@@ -19,7 +20,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       respond_with_navigational(resource.errors, status: :unprocessable_entity){ render :new }
     end
   end
-	
+
   private
 
   def after_confirmation_path_for(resource_name, resource)

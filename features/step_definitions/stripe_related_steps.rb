@@ -25,9 +25,9 @@ Given('I fill in {string} with {string} in the Stripe input field') do |field, v
     frame_name = '__privateStripeFrame6'
     field_name = 'cvc'
 	end
-	
+
 	stripe_frame = find("iframe[name='#{frame_name}'")
-	within_frame stripe_frame do 
+	within_frame stripe_frame do
 		find_field(field_name).send_keys(value)
 	end
 end
