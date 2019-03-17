@@ -25,7 +25,10 @@ Rails.application.configure do
 
 	config.action_mailer.default_url_options = { host: 'localhost3000' }
 
-  config.active_support.deprecation = :stderr
+	config.active_support.deprecation = :stderr
+
+	config.stripe.secret_key = Rails.application.credentials.stripe_secret_key
+	config.stripe.publishable_key = Rails.application.credentials.stripe_publishable_key
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
