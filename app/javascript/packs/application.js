@@ -35,6 +35,5 @@ document.addEventListener('turbolinks:load', () => {
 				subscriptionForm.submit()
 			})
 		})
-
 	}
 })

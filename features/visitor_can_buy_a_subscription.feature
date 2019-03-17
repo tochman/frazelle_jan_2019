@@ -19,12 +19,13 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		And I wait 3 seconds
+		And I wait 10 seconds
 		Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 		And I wait 2 seconds
 		And "thomas@craft.com" should receive 1 email
 		When I open the email
 		Then I should see "Welcome to The Hub News thomas@craft.com!" in the email body
+		And I should see my temporary password in the email body
 		When "thomas@craft.com" follow "Confirm my account" in the email
 		And I should be a subscriber
 		Then I should see "You have to change your password"
@@ -33,4 +34,3 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Current password" with my temp password
 		When I click on "Update"
 		Then I should see "Your account has been updated successfully."
-		#Then show me the page

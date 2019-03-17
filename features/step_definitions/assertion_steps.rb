@@ -35,15 +35,21 @@ Then("I should see {string} in {string}") do |expected_content, name|
 	end
 end
 
-And("I should be redirected to the purchase subscription page") do
+Then("I should be redirected to the purchase subscription page") do
 	expect(current_path).to eq new_user_registration_path
 end
 
-And("I wait {int} seconds") do |int|
+Then("I wait {int} seconds") do |int|
 	sleep int
 end
 
 Then("I should be a subscriber") do
 	@user = User.last
 	expect(@user.subscriber?).to eq true
+end
+
+Then("I should see my temporary password in the email body") do
+	@user = User.last
+	password = @user.temp_password
+	expect(current_email.default_part_body.to_s).to include(password)
 end
