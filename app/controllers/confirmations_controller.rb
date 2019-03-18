@@ -5,7 +5,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 		self.resource = resource_class.confirm_by_token(params[:confirmation_token])
 		yield resource if block_given?
 
-		if  resource.sign_in_count == 0
+		if resource.sign_in_count == 0
 			resource.subscriber!
 			sign_in(resource)
 			flash[:notice] = "You have to change your password"

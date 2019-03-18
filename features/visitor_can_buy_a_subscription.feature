@@ -20,6 +20,7 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
 		And I wait 10 seconds
+		Then show me the page
 		Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 		And I wait 2 seconds
 		And "thomas@craft.com" should receive 1 email
