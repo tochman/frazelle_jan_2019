@@ -1,4 +1,4 @@
-@javascript
+@javascript @stripe
 Feature: Visitor can become a Registered User and a Subscriber at once
 	As a Visitor
 	In order to get access to the best articles
@@ -19,7 +19,6 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		And I wait 10 seconds
 		Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 		And I wait 2 seconds
 		And "thomas@craft.com" should receive 1 email
