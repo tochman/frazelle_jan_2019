@@ -16,7 +16,7 @@ p {
 }
 
 .subscribe_button {
-	@apply inline-block text-sm px-4 py-2 leading-none border font-bold rounded text-white border-white mt-0 no-underline
+	@apply inline-block text-lg px-6 py-3 leading-none border font-bold rounded text-white border-white mt-0 no-underline
 }
 
 .subscribe_button:hover {
@@ -24,7 +24,7 @@ p {
 }
 
 .navbar {
-	@apply flex items-center justify-between flex-wrap bg-red p-6
+	@apply flex items-center justify-between flex-wrap bg-red p-10
 }
 
 .navbar_wrapper {
@@ -32,7 +32,7 @@ p {
 }
 
 .nav_header {
-	@apply font-semibold text-xl tracking-tight no-underline text-white
+	@apply font-semibold text-5xl tracking-tight no-underline text-white
 }
 
 .nav_link_block {
@@ -96,7 +96,7 @@ p {
 }
 
 .article {
-	@apply max-w-md rounded overflow-hidden shadow-lg p-4
+	@apply max-w-md rounded overflow-hidden shadow-lg p-4 w-1/2 ml-2
 }
 
 .article_content {
