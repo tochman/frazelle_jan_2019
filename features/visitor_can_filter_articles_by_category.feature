@@ -19,9 +19,9 @@ Feature: Visitor can see categorized articles
 
 	Scenario: Visitor can see category links
 		Given I visit the "landing" page
-		When I click on "sports"
-		And I should see "The Hub News is the site of the moment" in "sports"
+		When I click on "Sports"
+		And I should see "The Hub News is the site of the moment"
 		But I should not see "Spring hasn't arrived in Sweden yet"
-		When I click on "tech"
-		And I should see "Spring hasn't arrived in Sweden yet" in "tech"
+		When I click on "Tech"
+		And I should see "Spring hasn't arrived in Sweden yet"
 		But I should not see "The Hub News is the site of the moment"
