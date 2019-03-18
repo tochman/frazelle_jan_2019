@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 class RegistrationsController < Devise::RegistrationsController
+	before_action :mock_stripe_in_test
+
 	def create
     random_password = [*('a'..'z'), *('0'..'9')].sample(6).join
     build_resource(sign_up_params.merge(password: random_password,
 																				temp_password: random_password))
-																				
+
     customer = Stripe::Customer.create(
       email: resource.email,
-      source: params[:stripeToken],
+      source: stripe_token(params),
       description: 'The Hub News subscriber'
     )
 
@@ -40,5 +42,19 @@ class RegistrationsController < Devise::RegistrationsController
     else
       redirect_to root_path, notice: 'Sorry, something went wrong..'
     end
-  end
+	end
+
+	private
+
+	def stripe_token(params)
+		Rails.env.test? ? generate_test_token : params[:stripeToken]
+	end
+
+	def generate_test_token
+		StripeMock.generate_card_token
+	end
+
+	def mock_stripe_in_test
+		StripeMock.start if Rails.env.test?
+	end
 end

@@ -40,3 +40,11 @@ Capybara.javascript_driver = :chrome
 Warden.test_mode!
 World Warden::Test::Helpers
 After { Warden.test_reset! }
+
+Before '@stripe' do
+	StripeMock.start
+end
+
+After '@stripe' do
+	StripeMock.stop
+end
