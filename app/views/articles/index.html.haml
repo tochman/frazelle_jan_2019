@@ -5,12 +5,15 @@
 
 - @categories.each do |category|
 	%div{id: dom_id(category)}
-		%p= category.name.capitalize
-		-category.articles.each do |article|
-			.article_box{id: "#{dom_id(article)}"}
-				- if article.status == "free"
-					= link_to article.title, article_path(article)
-					%p= truncate(article.content, length: 100, separator: ' ', ommision: "... (Read More)")
-				- else
-					= link_to article.title, (user_signed_in? ? article_path(article) : new_user_registration_path)
-					%p= truncate(article.content, length: 100, separator: ' ', ommision: "... (Read More)")
+		%p.text-center= t(category.name.capitalize)
+		%div.flex.flex-wrap.mb-4.justify-center
+			-category.articles.each do |article|
+				.article.text-center{id: "#{dom_id(article)}"}
+					- if article.status == "free"
+						= link_to article.title, article_path(article), class: "text-lg"
+						=image_tag article.image, class: 'article_image w-full py-2'
+						%p= truncate(article.content, length: 100, separator: ' ', ommision: "... (Read More)")
+					- else
+						= link_to article.title, (user_signed_in? ? article_path(article) : new_user_registration_path)
+						=image_tag article.image, class: 'article_image w-full py-2'
+						%p= truncate(article.content, length: 100, separator: ' ', ommision: "... (Read More)")
