@@ -26,7 +26,10 @@ document.addEventListener('turbolinks:load', () => {
 
 		subscriptionForm.addEventListener('submit', (event) => {
 			event.preventDefault();
-			stripe.createToken(cardNumberElement).then(result => {
+
+			const name = document.getElementById('name_on_card').value;
+
+			stripe.createToken(cardNumberElement, {name: name}).then(result => {
 				const hiddenInput = document.createElement('input')
 				hiddenInput.setAttribute('type', 'hidden')
 				hiddenInput.setAttribute('name', 'stripeToken')
