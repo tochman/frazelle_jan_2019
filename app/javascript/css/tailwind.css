@@ -102,3 +102,7 @@ p {
 .article_content {
 	@apply text-grey-darker text-base
 }
+
+.error_display {
+	@apply text-center text-lg mb-6
+}
