@@ -28,7 +28,7 @@ group :development, :test do
 	gem 'selenium-webdriver'
   gem 'coveralls', require: false
   gem 'launchy'
-	gem 'stripe-ruby-mock', '~> 2.5.6', :require => 'stripe_mock'
+	gem 'stripe-ruby-mock', '~> 2.5.6', require: 'stripe_mock'
 end
 
 group :development do

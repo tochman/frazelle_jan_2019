@@ -14,16 +14,16 @@ When('I fill in the payment form with valid cc credentials') do
 end
 
 Given('I fill in {string} with {string} in the Stripe input field') do |field, value|
-  case field
-  when 'Cardnumber'
-    frame_name = '__privateStripeFrame4'
-    field_name = 'cardnumber'
-  when 'Expiry date'
-    frame_name = '__privateStripeFrame5'
-    field_name = 'exp-date'
-  when 'CVC'
-    frame_name = '__privateStripeFrame6'
-    field_name = 'cvc'
+	case field
+	when 'Cardnumber'
+		frame_name = '__privateStripeFrame4'
+		field_name = 'cardnumber'
+	when 'Expiry date'
+		frame_name = '__privateStripeFrame5'
+		field_name = 'exp-date'
+	when 'CVC'
+		frame_name = '__privateStripeFrame6'
+		field_name = 'cvc'
 	end
 
 	stripe_frame = find("iframe[name='#{frame_name}'")
