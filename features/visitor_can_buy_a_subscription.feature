@@ -13,7 +13,7 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 	Scenario: View list of articles on the landing page
 		Given I visit the application
 		And I click on "Subscribe"
-		And I fill in "Name on card" with "Thomas Ochman"
+		And I fill in "name_on_card" with "Thomas Ochman"
 		And I fill in "Email" with "thomas@craft.com"
 		And I fill in "Cardnumber" with "4242424242424242" in the Stripe input field
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
