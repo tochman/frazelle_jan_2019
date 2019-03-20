@@ -6,7 +6,7 @@ class EmployeesController < ApplicationController
 	private
 
 	def check_staff_auth
-		if user_signed_in? && current_user.role >= 2
+		if user_signed_in? && current_user.role == "journalist"
 		else
 			redirect_to root_path
 		end

@@ -6,7 +6,7 @@
 			= link_to_unless_current "English", locale: "en", class: "nav_links"
 			= link_to_unless_current "Svenska", locale: "sv", class: "nav_links"
 		.subscription
-			-if(user_signed_in? && current_user.role >= 2)
+			-if(user_signed_in? && current_user.role == "journalist")
 				= link_to 'Employee', employees_path, class: "subscribe_button"
 			-else
 				= link_to t('login'), new_user_session_path, class: "subscribe_button"
