@@ -5,5 +5,5 @@ class User < ApplicationRecord
 
 	protected
 
-	enum role: { registered: 0, subscriber: 1, journalist: 2 }
+	enum role: { registered: 0, journalist: 2 }
 end

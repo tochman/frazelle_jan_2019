@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 	resources :articles, only: [:index, :show]
 
 	namespace :staff_content do
-    resources :articles
+    resources :articles, only: [:index]
   end
 end
