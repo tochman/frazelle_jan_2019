@@ -3,13 +3,16 @@ class StaffContent::ArticlesController < ApplicationController
 	def index
 	end
 
+	def new
+	end
+
 	def create
 		article = Article.new(article_params)
 
 		if article.save
-				redirect_to new_article_path, notice: 'Article was successfully created.'
+				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
 		else
-				redirect_to new_article_path, alert: 'You have to fill out all the fields'
+				redirect_to staff_content_articles_path, alert: 'You have to fill out all the fields'
 		end
 	end
 
@@ -19,5 +22,9 @@ class StaffContent::ArticlesController < ApplicationController
 		if user_signed_in? && current_user.role != "journalist"
 			redirect_to root_path
 		end
+	end
+
+	def article_params
+		params.require(:article).permit(:title, :content)
 	end
 end

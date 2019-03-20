@@ -15,4 +15,7 @@ Feature: Jorunalist can create an article
 		And I visit the "landing" page
 		When I click on "Employee"
 		Then I should see "Welcome to the staff page"
-		
+		And I fill in "Title" with "Title goes here"
+		And I fill in "Content" with "Content goes here"
+		And I click "Save Article"
+		Then I should see "Article was successfully created."

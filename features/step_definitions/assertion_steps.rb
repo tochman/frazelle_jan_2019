@@ -34,3 +34,7 @@ Then("I should see {string} in {string}") do |expected_content, name|
 		expect(page).to have_content expected_content
 	end
 end
+
+Then("I click {string}") do |element|
+	click_on element
+end
