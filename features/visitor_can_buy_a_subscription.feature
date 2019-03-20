@@ -47,3 +47,15 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I wait 2 seconds
 		Then I should see "1 error prohibited this user from being saved:"
 		And I should see "Email can't be blank"
+
+	Scenario: Visitor cannot become a subscriber if enters wrong credentials [sad path]
+		Given I visit the application
+		And I click on "Subscribe"
+		And I fill in "name_on_card" with "Thomas Ochman"
+		And I fill in "Email" with "thomas@craft.com"
+		And I fill in "Cardnumber" with "4000000000009995" in the Stripe input field
+		And I fill in "Expiry date" with "12/22" in the Stripe input field
+		And I fill in "CVC" with "123" in the Stripe input field
+		When I click on "Pay for Subscription"
+		And I wait 4 seconds
+		Then I should see "Your card has insufficient funds."

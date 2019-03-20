@@ -6,18 +6,25 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params.merge(password: random_password,
 																				temp_password: random_password))
 		if resource.valid?
-			customer = Stripe::Customer.create(
-				email: resource.email,
-				source: stripe_token(params),
-				description: 'The Hub News subscriber'
-			)
+			begin
+				customer = Stripe::Customer.create(
+					email: resource.email,
+					source: stripe_token(params),
+					description: 'The Hub News subscriber'
+				)
 
-			charge = Stripe::Charge.create(
-				customer: customer.id,
-				amount: 10_000,
-				currency: 'sek',
-				description: '1 month subscription to The Hub News'
-			)
+				charge = Stripe::Charge.create(
+					customer: customer.id,
+					amount: 10_000,
+					currency: 'sek',
+					description: '1 month subscription to The Hub News'
+				)
+			rescue Stripe::CardError => e
+				#binding.pry
+				body = e.json_body
+				err = body[:error][:message]
+				redirect_to new_user_registration_path, notice: err and return
+			end
 
 			if charge[:paid]
 				resource.save
