@@ -6,8 +6,8 @@ class StaffContent::ArticlesController < ApplicationController
 	private
 
 	def check_staff_auth
-		if user_signed_in? && current_user.role == "journalist"
-		else
+		binding.pry
+		if user_signed_in? && current_user.role != "journalist"
 			redirect_to root_path
 		end
 	end

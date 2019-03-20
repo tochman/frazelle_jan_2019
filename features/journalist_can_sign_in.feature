@@ -7,7 +7,7 @@ Feature: Journalist can sign in
 		Given the following users exist
 			| email           | role    		 	  |
 			| amanda@mail.com | journalist			|
-			| viktor@mail.com | subscriber	    |
+			| viktor@mail.com | registered	    |
 
 	Scenario: Logging in as Journalist (access to staff page)
 		Given I am logged in as "amanda@mail.com"
