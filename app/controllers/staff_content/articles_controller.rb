@@ -3,6 +3,16 @@ class StaffContent::ArticlesController < ApplicationController
 	def index
 	end
 
+	def create
+		article = Article.new(article_params)
+
+		if article.save
+				redirect_to new_article_path, notice: 'Article was successfully created.'
+		else
+				redirect_to new_article_path, alert: 'You have to fill out all the fields'
+		end
+	end
+
 	private
 
 	def check_staff_auth
