@@ -48,7 +48,7 @@ class RegistrationsController < Devise::RegistrationsController
 				redirect_to root_path, notice: 'Sorry, something went wrong..'
 			end
 		else
-			redirect_to new_user_registration_path, notice: "Please insert valid details"
+			redirect_to new_user_registration_path, notice: "Please insert valid email"
 		end
 	end
 

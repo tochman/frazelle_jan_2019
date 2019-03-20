@@ -31,3 +31,12 @@ Given('I fill in {string} with {string} in the Stripe input field') do |field, v
 		find_field(field_name).send_keys(value)
 	end
 end
+
+Then('the card got declined with message {string}') do |content|
+	binding.pry
+	within_frame @stripe_iframe do
+			within '.Popover-content' do
+			expect(page).to have_content content
+			end
+	end
+end
