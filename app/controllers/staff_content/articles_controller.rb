@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class StaffContent::ArticlesController < ApplicationController
 	before_action :check_staff_auth
 	def index
 	end
