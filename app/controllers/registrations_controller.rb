@@ -20,7 +20,6 @@ class RegistrationsController < Devise::RegistrationsController
 					description: '1 month subscription to The Hub News'
 				)
 			rescue Stripe::CardError => e
-				#binding.pry
 				body = e.json_body
 				err = body[:error][:message]
 				redirect_to new_user_registration_path, notice: err and return

@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   protected
 
-  enum role: { registered: 0, subscriber: 1 }
+  enum role: { registered: 0, subscriber: 1, journalist: 2 }
 
   def password_required?
     confirmed? ? super : false

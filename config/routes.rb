@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 		confirmations: :confirmations
 	}
 	root controller: :articles, action: :index
-	resources :articles, only: %i[index show]
+	resources :articles, only: [:index, :show]
+
+	namespace :staff_content do
+    resources :articles, only: [:index]
+  end
 end

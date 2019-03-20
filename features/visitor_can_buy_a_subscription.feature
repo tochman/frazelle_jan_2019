@@ -34,7 +34,8 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Current password" with my temp password
 		And I click on "Update"
 		Then I should see "Your account has been updated successfully."
-		# Given I am logged in as "laura@ca.com"
+
+		# Given I am logged in as "thomas@craft.com"
 		# When I visit the "landing" page
 		# And I click on "Spring hasn't arrived in Sweden yet"
 		# Then I should see "Ice can be still spotted on the street, watch out!"
@@ -45,6 +46,7 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I click on "Subscribe"
 		And I fill in "name_on_card" with "Thomas Ochman"
 		And I fill in "Email" with " "
+		And I wait 2 seconds
 		And I fill in "Cardnumber" with "4242424242424242" in the Stripe input field
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field

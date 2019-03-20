@@ -1,0 +1,19 @@
+.form_container
+  .form_wrapper
+    %h2.text-center Log In
+    .form_container
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .mb-4
+          = f.label :email, class: "label"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input_field"
+        .mb-6
+          = f.label :password, class: "label"
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", class: "input_field"
+        .flex.items-center.justify-between
+          = f.submit "Log In", class: "button"

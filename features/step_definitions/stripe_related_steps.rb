@@ -16,24 +16,23 @@ end
 Given('I fill in {string} with {string} in the Stripe input field') do |field, value|
 	case field
 	when 'Cardnumber'
-		frame_name = '__privateStripeFrame4'
+		frame_name = '#card_number div iframe'
 		field_name = 'cardnumber'
 	when 'Expiry date'
-		frame_name = '__privateStripeFrame5'
+		frame_name = '#exp_date div iframe'
 		field_name = 'exp-date'
 	when 'CVC'
-		frame_name = '__privateStripeFrame6'
+		frame_name = '#cvc div iframe'
 		field_name = 'cvc'
 	end
 
-	stripe_frame = find("iframe[name='#{frame_name}'")
+	stripe_frame = find(frame_name)
 	within_frame stripe_frame do
 		find_field(field_name).send_keys(value)
 	end
 end
 
 Then('the card got declined with message {string}') do |content|
-	binding.pry
 	within_frame @stripe_iframe do
 			within '.Popover-content' do
 			expect(page).to have_content content
