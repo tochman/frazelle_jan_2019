@@ -2,5 +2,7 @@
 = form_with model: @article, url: staff_content_articles_path do |form|
 	%input{type: 'title'}
 	%input{type: 'content'}
+	%input{type: 'category'}
+	%input{type: 'status'}
 	.form-actions
 		%button.btn.btn-primary{type: 'Save Article'} Save

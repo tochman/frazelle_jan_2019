@@ -1,7 +1,8 @@
 class StaffContent::ArticlesController < ApplicationController
 	before_action :check_staff_auth
+
 	def index
-		@article = Article.all
+		@articles = Article.all
 	end
 
 	def new
@@ -12,8 +13,9 @@ class StaffContent::ArticlesController < ApplicationController
 	end
 
 	def create
-		article = Article.new(params[:id])
-		if article.save
+		@article = Article.new(params[:id])
+		binding.pry
+		if @article.save
 				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
 		else
 				redirect_to staff_content_articles_path, alert: 'You have to fill out all the fields'
