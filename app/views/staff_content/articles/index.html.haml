@@ -1,6 +1,6 @@
 %h1 Welcome to the staff page
-= form_with model: @article, url: staff_content_articles_path do
-	= form.text_field :title, required: true
-	= form.label :content
-	= form.text_area :content, required: true
-	= form.submit
+= form_with model: @article, url: staff_content_articles_path do |form|
+	%input{type: 'title'}
+	%input{type: 'content'}
+	.form-actions
+		%button.btn.btn-primary{type: 'Save Article'} Save

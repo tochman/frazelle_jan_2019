@@ -8,9 +8,11 @@ class StaffContent::ArticlesController < ApplicationController
 		@article = Article.new
 	end
 
-	def create
-		article = Article.new(article_params)
+	def show
+	end
 
+	def create
+		article = Article.new(params[:id])
 		if article.save
 				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
 		else
