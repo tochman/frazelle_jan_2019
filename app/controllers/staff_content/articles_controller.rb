@@ -13,8 +13,10 @@ class StaffContent::ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = Article.new(article_params)
-		binding.pry
+		category = Category.where(name: params[:category].downcase).first
+
+		@article = Article.new(category: category, status: params[:status].downcase, title: params[:title], content: params[:content])
+
 		if @article.save
 				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
 		else
@@ -28,10 +30,5 @@ class StaffContent::ArticlesController < ApplicationController
 		if user_signed_in? && current_user.role != "journalist"
 			redirect_to root_path
 		end
-	end
-
-	def article_params
-		binding.pry
-		params.permit(:title, :content)
 	end
 end

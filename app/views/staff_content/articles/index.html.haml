@@ -1,21 +1,17 @@
 %h1 Welcome to the staff page
-= form_with model: @article, url: staff_content_articles_path do |form|
-	%input{type: 'title', name: "Title"} Title
-	%input{type: 'status'}
-	.form-actions
-		%button.btn.btn-primary{type: 'Save Article'} Save Article
-		.component
-			.form-group
-				%label.col-md-4.control-label{for: "textarea"} Content
-				.col-md-4
-					%textarea#textarea.form-control{name: "textarea"} Content
-					.control-group
-						%label.control-label Categories
-						.controls
-							%select.categories-select
-								%option Sports
-								%option Entertainment
-								%option Local
-								%option Global
-								%option Tech
-								%option Politics
+= form_with model: @article, url: staff_content_articles_path, method: "post" do |f|
+	%input{name: "title"} Title
+	%select#status-select{name: "status"}
+		%option Free
+		%option Restricted
+		%label.control_label{for: "content"} Content
+		%textarea#content.form-control{name: "content"}
+		%label.control-label{for: "category"} Categories
+		%select#categories-select{name: "category"}
+			%option Sports
+			%option Entertainment
+			%option Local
+			%option Global
+			%option Tech
+			%option Politics
+		%button.btn.btn-primary{type: "submit"} Save Article

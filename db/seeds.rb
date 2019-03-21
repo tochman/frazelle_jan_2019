@@ -20,3 +20,5 @@ article4 = Article.create(title: "Something happened in the World", content: "Gr
 article5 = Article.create(title: "Game of Thrones last season is out soon!", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 5, status: "free")
 article6 = Article.create(title: "Silicon Valley Season 6 coming soon?", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 5, status: "free")
 article7 = Article.create(title: "Hockey is good for your kids", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 1, status: "free")
+
+journalist1 = User.create(email: "john@doe.com", password: "password", role: 1)

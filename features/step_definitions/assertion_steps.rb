@@ -39,6 +39,6 @@ Then("I click {string}") do |element|
 	click_on element
 end
 
-Then("I select {string} from {string}") do |element, name|
-	expect(page).to have_select('Categories', selected: 'Sports')
+Then('I select {string} from {string}') do |option, selector|
+	select option, from: selector
 end
