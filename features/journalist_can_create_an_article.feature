@@ -5,7 +5,15 @@ Feature: Jorunalist can create an article
 	I would like to be able to have an article creation form
 
 	Background:
-			Given the following users exist
+		Given the following categories exist
+			| name          |
+			| sports        |
+			| tech          |
+			| local         |
+			| entertainment |
+			| global        |
+			| politics      |
+		Given the following users exist
 			| email           | role    		 	  |
 			| amanda@mail.com | journalist			|
 			| viktor@mail.com | registered	    |
@@ -17,5 +25,6 @@ Feature: Jorunalist can create an article
 		Then I should see "Welcome to the staff page"
 		And I fill in "Title" with "Title goes here"
 		And I fill in "Content" with "Content goes here"
+		And I select "Sports" from "Categories"
 		And I click "Save Article"
 		Then I should see "Article was successfully created."

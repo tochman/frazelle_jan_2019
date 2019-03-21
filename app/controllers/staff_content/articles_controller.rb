@@ -13,7 +13,7 @@ class StaffContent::ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = Article.new(params[:id])
+		@article = Article.new(article_params)
 		binding.pry
 		if @article.save
 				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
@@ -31,6 +31,7 @@ class StaffContent::ArticlesController < ApplicationController
 	end
 
 	def article_params
-		params.require(:article).permit(:title, :content)
+		binding.pry
+		params.permit(:title, :content)
 	end
 end
