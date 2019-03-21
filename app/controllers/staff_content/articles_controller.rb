@@ -1,9 +1,11 @@
 class StaffContent::ArticlesController < ApplicationController
 	before_action :check_staff_auth
 	def index
+		@article = Article.all
 	end
 
 	def new
+		@article = Article.new
 	end
 
 	def create
