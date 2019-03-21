@@ -48,3 +48,16 @@ end
 After '@stripe' do
 	StripeMock.stop
 end
+
+Before '@stripe_errorINSUFF_FUNDS' do
+	custom_error = StandardError.new("Your card has insufficient funds.")
+  StripeMock.prepare_error(custom_error, :new_customer)
+end
+
+Before '@stripe_errorCVC' do
+	StripeMock.prepare_card_error(:incorrect_cvc)
+end
+
+Before '@stripe_errorEXPIRED' do
+	StripeMock.prepare_card_error(:invalid_expiry_year)
+end

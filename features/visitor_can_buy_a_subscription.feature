@@ -6,19 +6,22 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 
 	Background:
 		Given the following articles exist
-			| title                                  | category |
-			| The Hub News is the site of the moment | tech     |
-			| Spring hasn't arrived in Sweden yet    | sports   |
+			| title                                  | content                                                     | category | status     |
+			| The Hub News is the site of the moment | Great articles! This site's popularity is raising so quick! | tech     | free       |
+			| Spring hasn't arrived in Sweden yet    | Ice can be still spotted on the street, watch out!          | sports   | restricted |
 
 	Scenario: Visitor can successfully become a subscriber [happy path]
 		Given I visit the application
-		And I click on "Subscribe"
+		When I click on "Spring hasn't arrived in Sweden yet"
+		Then I should be on subscription page
+		And I should not see "Ice can be still spotted on the street, watch out!"
+		When I click on "Subscribe"
 		And I fill in "name_on_card" with "Thomas Ochman"
 		And I fill in "Email" with "thomas@craft.com"
 		And I fill in "Cardnumber" with "4242424242424242" in the Stripe input field
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
-		When I click on "Pay for Subscription"
+		And I click on "Pay for Subscription"
 		And I wait 4 seconds
 		Then I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 		And I wait 2 seconds
@@ -34,12 +37,9 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Current password" with my temp password
 		And I click on "Update"
 		Then I should see "Your account has been updated successfully."
-
-		# Given I am logged in as "thomas@craft.com"
-		# When I visit the "landing" page
-		# And I click on "Spring hasn't arrived in Sweden yet"
-		# Then I should see "Ice can be still spotted on the street, watch out!"
-		# And I should see an article image
+		When I visit the "landing" page
+		And I click on "Spring hasn't arrived in Sweden yet"
+		Then I should see "Ice can be still spotted on the street, watch out!"
 
 	Scenario: Visitor cannot become a subscriber if enters wrong credentials [sad path]
 		Given I visit the application
@@ -51,21 +51,10 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		And I wait 10 seconds
+		And I wait 5 seconds
 		Then I should see "Please insert valid email"
 
-	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
-		Given I visit the application
-		And I click on "Subscribe"
-		And I fill in "name_on_card" with "Thomas Ochman"
-		And I fill in "Email" with "thomas@craft.com"
-		And I fill in "Cardnumber" with "4000000000009995" in the Stripe input field
-		And I fill in "Expiry date" with "12/22" in the Stripe input field
-		And I fill in "CVC" with "123" in the Stripe input field
-		When I click on "Pay for Subscription"
-		And I wait 10 seconds
-		Then the card got declined with message "Your card has insufficient funds."
-
+	@stripe @stripe_errorCVC
 	Scenario: Visitor cannot become a subscriber if card has wrong CVC number [sad path]
 		Given I visit the application
 		And I click on "Subscribe"
@@ -75,5 +64,30 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		And I wait 10 seconds
 		Then the card got declined with message "Your card's security code is incorrect."
+
+	@stripe @stripe_errorINSUFF_FUNDS
+	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
+		Given I visit the application
+		And I click on "Subscribe"
+		And I fill in "name_on_card" with "Thomas Ochman"
+		And I fill in "Email" with "thomas@craft.com"
+		And I fill in "Cardnumber" with "4000000000009995" in the Stripe input field
+		And I fill in "Expiry date" with "12/22" in the Stripe input field
+		And I fill in "CVC" with "123" in the Stripe input field
+		When I click on "Pay for Subscription"
+		And I wait 2 seconds
+		Then the card got declined with message "Your card has insufficient funds."
+
+		@stripe @stripe_errorEXPIRED
+	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
+		Given I visit the application
+		And I click on "Subscribe"
+		And I fill in "name_on_card" with "Thomas Ochman"
+		And I fill in "Email" with "thomas@craft.com"
+		And I fill in "Cardnumber" with "4000000000000069" in the Stripe input field
+		And I fill in "Expiry date" with "12/17" in the Stripe input field
+		And I fill in "CVC" with "123" in the Stripe input field
+		When I click on "Pay for Subscription"
+		And I wait 2 seconds
+		Then the card got declined with message "Your card has insufficient funds."
