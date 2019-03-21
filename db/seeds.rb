@@ -18,3 +18,6 @@ article2 = Article.create(title: "Spring hasn't arrived in Sweden yet", content:
 article3 = Article.create(title: "Eating cinnamon buns increases life expectancy", content: "Researchers are running clinical studies to see the benefits of cinnamon buns consumption. Some state that it might be", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 3, status: "restricted")
 article4 = Article.create(title: "The Hub News is the site of the moment", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 4, status: "free")
 article5 = Article.create(title: "The Hub News is the site of the moment", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 5, status: "free")
+
+journalist = User.create(email: "ali@lola.com", password: "password", role: 1)
+editor = User.create(email: "laura@ca.com", password: "password", role: 2)
