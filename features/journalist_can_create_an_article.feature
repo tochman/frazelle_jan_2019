@@ -29,3 +29,15 @@ Feature: Jorunalist can create an article
 		And I select "Sports" from "categories-select"
 		And I click "Save Article"
 		Then I should see "Article was successfully created."
+
+	Scenario: Journalist cant create and artcile [SadPath]
+		Given I am logged in as "amanda@mail.com"
+		And I visit the "landing" page
+		When I click on "Employee"
+		Then I should see "Welcome to the staff page"
+		And I fill in "title" with "Title goes here"
+		And I fill in "content" with ""
+		And I select "Free" from "status-select"
+		And I select "Sports" from "categories-select"
+		And I click "Save Article"
+		Then I should see "You have to fill out all the fields"
