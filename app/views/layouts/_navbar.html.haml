@@ -8,6 +8,9 @@
 		.subscription
 			-if(user_signed_in? && (current_user.role == "journalist" || current_user.role == "editor"))
 				= link_to 'Employee', staff_content_articles_path, class: "subscribe_button"
+				= link_to t('logout'), destroy_user_session_path, method: "delete", class: "subscribe_button"
 			-elsif(!user_signed_in?)
 				= link_to t('login'), new_user_session_path, class: "subscribe_button"
 				= link_to t('signup'), new_user_registration_path, class: "subscribe_button"
+			-else
+				= link_to t('logout'), destroy_user_session_path, method: "delete", class: "subscribe_button"
