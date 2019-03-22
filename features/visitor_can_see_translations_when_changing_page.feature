@@ -27,5 +27,5 @@ Feature: Visitor can see translations when changing page
 		Then I should see "Köp en prenumeration"
 		And I should see "E-post"
 		When I click on "English"
-		Then I should see "Become a subscriber"
+		Then I should see "Subscribe"
 		And I should see "Email"
