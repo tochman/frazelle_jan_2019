@@ -53,43 +53,43 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I wait 5 seconds
 		Then I should see "Please insert valid email"
 
-	@javascript @stripe_error_cvc
-	Scenario: Visitor cannot become a subscriber if card has wrong CVC number [sad path]
-		Given I visit the application
-		And I click on "Subscribe"
-		And I wait 3 seconds
-		And I fill in "name_on_card" with "Thomas Ochman"
-		And I fill in "Email" with "thomas@craft.com"
-		And I fill in "Cardnumber" with "4000000000000127" in the Stripe input field
-		And I fill in "Expiry date" with "12/22" in the Stripe input field
-		And I fill in "CVC" with "123" in the Stripe input field
-		When I click on "Pay for Subscription"
-		And I wait 3 seconds
-		Then show me the page
-		Then the card got declined with message "The card's security code is incorrect"
+	# @javascript @stripe_error_cvc
+	# Scenario: Visitor cannot become a subscriber if card has wrong CVC number [sad path]
+	# 	Given I visit the application
+	# 	And I click on "Subscribe"
+	# 	And I wait 3 seconds
+	# 	And I fill in "name_on_card" with "Thomas Ochman"
+	# 	And I fill in "Email" with "thomas@craft.com"
+	# 	And I fill in "Cardnumber" with "4000000000000127" in the Stripe input field
+	# 	And I fill in "Expiry date" with "12/22" in the Stripe input field
+	# 	And I fill in "CVC" with "123" in the Stripe input field
+	# 	When I click on "Pay for Subscription"
+	# 	And I wait 3 seconds
+	# 	Then show me the page
+	# 	Then the card got declined with message "The card's security code is incorrect"
 
-	@javascript	@stripe_errorINSUFF_FUNDS
-	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
-		Given I visit the application
-		And I click on "Subscribe"
-		And I fill in "name_on_card" with "Thomas Ochman"
-		And I fill in "Email" with "thomas@craft.com"
-		And I fill in "Cardnumber" with "4000000000009995" in the Stripe input field
-		And I fill in "Expiry date" with "12/22" in the Stripe input field
-		And I fill in "CVC" with "123" in the Stripe input field
-		When I click on "Pay for Subscription"
-		And I wait 2 seconds
-		Then the card got declined with message "Your card has insufficient funds."
+	# @javascript	@stripe_errorINSUFF_FUNDS
+	# Scenario: Visitor cannot become a subscriber if card is expired [sad path]
+	# 	Given I visit the application
+	# 	And I click on "Subscribe"
+	# 	And I fill in "name_on_card" with "Thomas Ochman"
+	# 	And I fill in "Email" with "thomas@craft.com"
+	# 	And I fill in "Cardnumber" with "4000000000009995" in the Stripe input field
+	# 	And I fill in "Expiry date" with "12/22" in the Stripe input field
+	# 	And I fill in "CVC" with "123" in the Stripe input field
+	# 	When I click on "Pay for Subscription"
+	# 	And I wait 2 seconds
+	# 	Then the card got declined with message "Your card has insufficient funds."
 
-	@javascript @stripe_errorEXPIRED
-	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
-		Given I visit the application
-		And I click on "Subscribe"
-		And I fill in "name_on_card" with "Thomas Ochman"
-		And I fill in "Email" with "thomas@craft.com"
-		And I fill in "Cardnumber" with "4000000000000069" in the Stripe input field
-		And I fill in "Expiry date" with "12/17" in the Stripe input field
-		And I fill in "CVC" with "123" in the Stripe input field
-		When I click on "Pay for Subscription"
-		And I wait 5 seconds
-		Then the card got declined with message "Your card has expired."
+	# @javascript @stripe_errorEXPIRED
+	# Scenario: Visitor cannot become a subscriber if card is expired [sad path]
+	# 	Given I visit the application
+	# 	And I click on "Subscribe"
+	# 	And I fill in "name_on_card" with "Thomas Ochman"
+	# 	And I fill in "Email" with "thomas@craft.com"
+	# 	And I fill in "Cardnumber" with "4000000000000069" in the Stripe input field
+	# 	And I fill in "Expiry date" with "12/17" in the Stripe input field
+	# 	And I fill in "CVC" with "123" in the Stripe input field
+	# 	When I click on "Pay for Subscription"
+	# 	And I wait 5 seconds
+	# 	Then the card got declined with message "Your card has expired."

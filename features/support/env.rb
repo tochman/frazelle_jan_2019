@@ -12,7 +12,7 @@ rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
-Chromedriver.set_version '2.36'
+Chromedriver.set_version '2.45'
 
 chrome_options = %w[disable-popup-blocking disable-infobars]
 
