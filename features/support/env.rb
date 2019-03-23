@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'coveralls'
 Coveralls.wear_merged!('rails')
 require 'cucumber/rails'
@@ -11,7 +12,7 @@ rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
-Chromedriver.set_version '2.42'
+Chromedriver.set_version '2.36'
 
 chrome_options = %w[disable-popup-blocking disable-infobars]
 
@@ -39,25 +40,39 @@ Capybara.javascript_driver = :chrome
 
 Warden.test_mode!
 World Warden::Test::Helpers
-After { Warden.test_reset! }
+
+After do
+  Warden.test_reset!
+  StripeMock.stop
+end
 
 Before '@stripe' do
-	StripeMock.start
+  StripeMock.start
 end
 
-After '@stripe' do
-	StripeMock.stop
-end
+# After '@stripe' do
+#   StripeMock.stop
+# end
 
 Before '@stripe_errorINSUFF_FUNDS' do
-	custom_error = StandardError.new("Your card has insufficient funds.")
+  StripeMock.start
+  custom_error = StandardError.new('Your card has insufficient funds.')
   StripeMock.prepare_error(custom_error, :new_customer)
+  # StripeMock.prepare_card_error(:incorrect_cvc)
 end
 
-Before '@stripe_errorCVC' do
-	StripeMock.prepare_card_error(:incorrect_cvc)
+Before '@stripe_error_cvc' do
+
+  StripeMock.toggle_live(true)
+  StripeMock.start
+
+  expect(StripeMock.create_test_helper).to be_a StripeMock::TestStrategies::Live
+  # StripeMock.start
+  # expect(StripeMock.create_test_helper).to be_a StripeMock::TestStrategies::Mock
+  # StripeMock.prepare_card_error(:incorrect_cvc)
 end
 
 Before '@stripe_errorEXPIRED' do
-	StripeMock.prepare_card_error(:invalid_expiry_year)
+  StripeMock.start
+  StripeMock.prepare_card_error(:invalid_expiry_year)
 end

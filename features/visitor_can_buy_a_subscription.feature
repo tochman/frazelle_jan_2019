@@ -1,4 +1,4 @@
-@javascript @stripe
+
 Feature: Visitor can become a Registered User and a Subscriber at once
 	As a Visitor
 	In order to get access to the best articles
@@ -9,13 +9,11 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 			| title                                  | content                                                     | category | status     |
 			| The Hub News is the site of the moment | Great articles! This site's popularity is raising so quick! | tech     | free       |
 			| Spring hasn't arrived in Sweden yet    | Ice can be still spotted on the street, watch out!          | sports   | restricted |
-
+	@javascript @stripe
 	Scenario: Visitor can successfully become a subscriber [happy path]
 		Given I visit the application
 		When I click on "Spring hasn't arrived in Sweden yet"
 		Then I should be on subscription page
-		And I should not see "Ice can be still spotted on the street, watch out!"
-		When I click on "Subscribe"
 		And I fill in "name_on_card" with "Thomas Ochman"
 		And I fill in "Email" with "thomas@craft.com"
 		And I fill in "Cardnumber" with "4242424242424242" in the Stripe input field
@@ -41,6 +39,7 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I click on "Spring hasn't arrived in Sweden yet"
 		Then I should see "Ice can be still spotted on the street, watch out!"
 
+	@javascript @stripe
 	Scenario: Visitor cannot become a subscriber if enters wrong credentials [sad path]
 		Given I visit the application
 		And I click on "Subscribe"
@@ -54,19 +53,22 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I wait 5 seconds
 		Then I should see "Please insert valid email"
 
-	@stripe @stripe_errorCVC
+	@javascript @stripe_error_cvc
 	Scenario: Visitor cannot become a subscriber if card has wrong CVC number [sad path]
 		Given I visit the application
 		And I click on "Subscribe"
+		And I wait 3 seconds
 		And I fill in "name_on_card" with "Thomas Ochman"
 		And I fill in "Email" with "thomas@craft.com"
 		And I fill in "Cardnumber" with "4000000000000127" in the Stripe input field
 		And I fill in "Expiry date" with "12/22" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		Then the card got declined with message "Your card's security code is incorrect."
+		And I wait 3 seconds
+		Then show me the page
+		Then the card got declined with message "The card's security code is incorrect"
 
-	@stripe @stripe_errorINSUFF_FUNDS
+	@javascript	@stripe_errorINSUFF_FUNDS
 	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
 		Given I visit the application
 		And I click on "Subscribe"
@@ -79,7 +81,7 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I wait 2 seconds
 		Then the card got declined with message "Your card has insufficient funds."
 
-		@stripe @stripe_errorEXPIRED
+	@javascript @stripe_errorEXPIRED
 	Scenario: Visitor cannot become a subscriber if card is expired [sad path]
 		Given I visit the application
 		And I click on "Subscribe"
@@ -89,5 +91,5 @@ Feature: Visitor can become a Registered User and a Subscriber at once
 		And I fill in "Expiry date" with "12/17" in the Stripe input field
 		And I fill in "CVC" with "123" in the Stripe input field
 		When I click on "Pay for Subscription"
-		And I wait 2 seconds
-		Then the card got declined with message "Your card has insufficient funds."
+		And I wait 5 seconds
+		Then the card got declined with message "Your card has expired."
