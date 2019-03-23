@@ -20,7 +20,7 @@ class StaffContent::ArticlesController < ApplicationController
 		if @article.save
 				redirect_to staff_content_articles_path, notice: 'Article was successfully created.'
 		else
-				redirect_to staff_content_articles_path, alert: 'You have to fill out all the fields'
+				redirect_to staff_content_articles_path, alert: 'You have to fill out all the fields.'
 		end
 	end
 

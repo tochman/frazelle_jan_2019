@@ -64,7 +64,7 @@ p {
 }
 
 .form_container {
-	@apply bg-white shadow-md rounded py-2 px-3 
+	@apply bg-white shadow-md rounded py-2 px-3
 	flex justify-center
 }
 
@@ -81,7 +81,7 @@ p {
 }
 
 .button {
-	@apply bg-red text-white font-bold py-2 px-4 rounded m-4
+	@apply bg-red text-white font-bold py-2 px-4 rounded m-4 w-4/5
 }
 
 .button:hover {

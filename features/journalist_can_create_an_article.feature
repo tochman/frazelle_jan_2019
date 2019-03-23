@@ -40,4 +40,4 @@ Feature: Jorunalist can create an article
 		And I select "Free" from "status-select"
 		And I select "Sports" from "categories-select"
 		And I click "Save Article"
-		Then I should see "You have to fill out all the fields"
+		Then I should see "You have to fill out all the fields."
