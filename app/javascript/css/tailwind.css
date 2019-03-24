@@ -106,3 +106,7 @@ p {
 .error_display {
 	@apply text-center text-lg mb-6
 }
+
+.section {
+	@apply 
+}
