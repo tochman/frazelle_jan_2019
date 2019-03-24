@@ -14,15 +14,21 @@ gem 'webpacker', '~> 3.5'
 gem 'tailwindcss', '~> 0.2.0'
 gem 'devise'
 gem 'haml'
+gem 'stripe-rails'
 
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+	gem 'email_spec'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+	gem 'chromedriver-helper'
+	gem 'selenium-webdriver'
   gem 'coveralls', require: false
+  gem 'launchy'
+	gem 'stripe-ruby-mock', '~> 2.5.6', require: 'stripe_mock'
 end
 
 group :development do

@@ -4,11 +4,13 @@ Feature: Visitor can view all listed articles
 	I would like to be able to see the articles listed on a page
 
 	Background:
+
 		Given the following categories exist
 			| name   |
 			| tech   |
 			| local  |
 			| sports |
+			
 		And the following articles exist
 			| title                                          | content                                                                                                                                                                                     | image | status     | category |
 			| The Hub News is the site of the moment         | Great articles! This site's popularity is raising so quick!                                                                                                                                 |       | free       | tech     |

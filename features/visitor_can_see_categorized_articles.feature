@@ -12,6 +12,7 @@ Feature: Visitor can see categorized articles
 			| entertainment |
 			| global        |
 			| politics      |
+			
 		And the following articles exist
 			| title                                  | content                                                     | image                                                                 | category |
 			| The Hub News is the site of the moment | Great articles! This site's popularity is raising so quick! | https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg | sports   |

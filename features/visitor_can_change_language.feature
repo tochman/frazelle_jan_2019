@@ -16,7 +16,7 @@ Feature: Visitor can change language
 
 	Scenario: View list of articles and categories on the landing page [English]
 		When I click on "English"
-		Then I should see "Become a subscriber"
+		Then I should see "Subscribe"
 		And I should see "Local"
 		And I should see "Global"
 		And I should see "Sports"

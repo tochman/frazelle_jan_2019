@@ -7,6 +7,7 @@ Feature: Visitor cannot read restricted articles
 		Given the following users exist
 			| email        | password |
 			| laura@ca.com | password |
+
 		And the following articles exist
 			| title                                  | content                                                     | image                                                                 | status     | category |
 			| The Hub News is the site of the moment | Great articles! This site's popularity is raising so quick! | https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg | free       | tech     |

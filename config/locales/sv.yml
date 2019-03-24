@@ -6,5 +6,10 @@ sv:
  Entertainment: Nöje
  Politics: Politik
  Tech: Teknik
- email: e-post
+ email: E-post
+ card_number: Kortnummer
+ expiry_date: Utgångsdatum
+ cvc: CVV
+ pay: Köp en prenumeration
+ name_on_card: Kortinnehavarens namn
  logout: Logga ut
