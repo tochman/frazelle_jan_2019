@@ -21,4 +21,11 @@ article5 = Article.create(title: "Game of Thrones last season is out soon!", con
 article6 = Article.create(title: "Silicon Valley Season 6 coming soon?", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 5, status: "free")
 article7 = Article.create(title: "Hockey is good for your kids", content: "Great articles! This site's popularity is raising so quick!", image:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285__340.jpg", category_id: 1, status: "free")
 
+<<<<<<< HEAD
 journalist1 = User.create(email: "john@doe.com", password: "password", role: 1)
+=======
+journalist = User.create(email: "ali@lola.com", password: "password", role: 2)
+journalist.confirm
+editor = User.create(email: "laura@ca.com", password: "password", role: 3)
+editor.confirm
+>>>>>>> 28c4445693574d79beb9a36a366ecd1675ea06e0

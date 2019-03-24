@@ -1,5 +1,5 @@
 en:
- signup: Become a subscriber
+ signup: Subscribe
  Local: Local
  Global: Global
  Sports: Sports
@@ -7,3 +7,9 @@ en:
  Politics: Politics
  Tech: Tech
  email: email
+ card_number: card_number
+ expiry_date: expiry_date
+ cvc: CVC
+ pay: Pay for Subscription
+ name_on_card: name_on_card
+ logout: Logout

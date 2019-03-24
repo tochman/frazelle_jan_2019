@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-	devise_for :users
-
+	devise_for :users, controllers: {
+		registrations: :registrations,
+		confirmations: :confirmations
+	}
 	root controller: :articles, action: :index
 	resources :articles, only: [:index, :show, :create, :new]
 	resources :categories, only: [:show]

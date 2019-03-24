@@ -119,3 +119,6 @@ p {
 .btn-group-wrap {
 	@apply m-auto mt-3
 }
+.error_display {
+	@apply text-center text-lg mb-6
+}

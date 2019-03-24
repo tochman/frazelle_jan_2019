@@ -1,0 +1,7 @@
+%p= "Welcome to The Hub News #{@email}!"
+
+%p You can confirm your account email through the link %below:
+
+%p= "Your temp password is #{@resource.temp_password}. You will have to change it on your first visit to The Hub News."
+%p
+  = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
