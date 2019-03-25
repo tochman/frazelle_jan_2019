@@ -41,6 +41,10 @@ Capybara.javascript_driver = :chrome
 Warden.test_mode!
 World Warden::Test::Helpers
 
+Before do
+	Geocoder.configure(lookup: :test, ip_lookup: :test)
+end
+
 After do
   Warden.test_reset!
   StripeMock.stop
