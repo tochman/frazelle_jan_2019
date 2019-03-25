@@ -13,11 +13,11 @@ Feature: Journalist can create an article
 			| entertainment |
 			| global        |
 			| politics      |
-		Given the following users exist
+		And the following users exist
 			| email           | role    		 	  |
 			| amanda@mail.com | journalist			|
 			| viktor@mail.com | registered	    |
-		Given I am logged in as "amanda@mail.com"
+		And I am logged in as "amanda@mail.com"
 		And I visit the "landing" page
 
 	Scenario: Journalist can create an article
@@ -30,7 +30,7 @@ Feature: Journalist can create an article
 		And I click "Save Article"
 		Then I should see "Article was successfully created."
 
-	Scenario: Journalist cant create and artcile [SadPath]
+	Scenario: Journalist cant create an artcile [SadPath]
 		When I click on "Employee"
 		Then I should see "Welcome to the staff page"
 		And I fill in "title" with "Title goes here"
