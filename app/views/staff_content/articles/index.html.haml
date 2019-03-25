@@ -1,21 +1,24 @@
 .h1
 	%p
 		%h1 Welcome to the staff page
-		= form_with model: @article, url: staff_content_articles_path, method: "post" do |f|
-			%label.control-label{for: "title"} Title
-			%input.form_container{name: "title"}
-			%label.control-label{for: "status"} Status
-			%select#status-select{name: "status"}
-				%option Free
-				%option Restricted
-				%label.control_label{for: "content"} Content
+		.form_container
+			= form_with model: @article, url: staff_content_articles_path, class: "w-1/2 text-center", method: "post" do |f|
+				%label.control-label{for: "title"} Title
+				%input.form_container{name: "title", class: "w-1/2"}
+				%label.control-label{for: "status"} Status
+				.flex.justify-center
+					%select#status-select{name: "status"}
+						%option Free
+						%option Restricted
+				%label.control_label.text-center{for: "content"} Content
 				%textarea.content.form-control.input_field_article.form_container{name: "content"}
 				%label.control-label{for: "category"} Categories
-				%select#categories-select{name: "category"}
-					%option Sports
-					%option Entertainment
-					%option Local
-					%option Global
-					%option Tech
-					%option Politics
-				%button.btn-group-wrap.button{style:'text-align:center;', type: "submit"} Save Article
+				.flex.justify-center
+					%select#categories-select{name: "category"}
+						%option Sports
+						%option Entertainment
+						%option Local
+						%option Global
+						%option Tech
+						%option Politics
+		%button.btn-group-wrap.button{style:'text-align:center;', type: "submit"} Save Article
