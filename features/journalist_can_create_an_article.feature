@@ -30,7 +30,7 @@ Feature: Journalist can create an article
 		And I click "Save Article"
 		Then I should see "Article was successfully created."
 
-	Scenario: Journalist cant create an artcile [SadPath]
+	Scenario: Journalist cant create an article [SadPath]
 		When I click on "Employee"
 		Then I should see "Welcome to the staff page"
 		And I fill in "title" with "Title goes here"
