@@ -35,6 +35,14 @@ Then("I should see {string} in {string}") do |expected_content, name|
 	end
 end
 
+Then("I click {string}") do |element|
+	click_on element
+end
+
+Then('I select {string} from {string}') do |option, selector|
+	select option, from: selector
+end
+
 Then("I should be redirected to the purchase subscription page") do
 	expect(current_path).to eq new_user_registration_path
 end
