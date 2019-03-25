@@ -8,7 +8,6 @@ h1 {
 
 h3 {
 	@apply text-right p-8 my-8 text-white
-
 }
 
 p {
@@ -122,22 +121,17 @@ p {
 	@apply text-center text-lg mb-6
 }
 
-/* .section {
-	@apply
-} */
 footer {
-  @apply pt-4;
-  @apply my-12;
-  @apply bg-red;
-  @apply py-8;
-  @apply text-center text-white;
+  @apply pt-4 my-12 bg-red py-8 text-center text-white
 }
 
-.image1 {
-	@apply min-h-0
+.icons {
+	@apply flex mb-4 justify-center m-auto
+
 }
+
 #categories-select {
-	@apply  m-2 text-center
+	@apply content-center
 }
 
 #status-select {
