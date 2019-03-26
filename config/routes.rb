@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 		confirmations: :confirmations
 	}
 	root controller: :articles, action: :index
-	resources :articles, only: [:index, :show]
+	resources :articles, only: [:index, :show, :create, :new]
 	resources :categories, only: [:show]
 
 	namespace :staff_content do
-    resources :articles, only: [:index]
+    resources :articles
   end
 end
