@@ -46,6 +46,7 @@ Before "@geolocation" do
 end
 
 After "@geolocation" do
+	#freegeoip.net provides a public HTTP API for software developers to search the geolocation of IP addresses.
  	Geocoder.configure(lookup: :freegeoip, ip_lookup: :freegeoip)
 end
 
