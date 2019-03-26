@@ -17,6 +17,10 @@ When("I visit the {string} page") do |page_name|
 	visit page
 end
 
+When('I visit the application') do
+	visit root_path
+end
+
 Given("I click on {string}") do |link|
 	click_on link
 end
@@ -33,5 +37,18 @@ end
 
 Given("I am logged in as {string}") do |email|
 	user = User.find_by(email: email)
+	user.confirm
 	login_as(user, scope: :user)
+end
+
+Then('stop') do
+	binding.pry
+end
+
+Then("show me the page") do
+  save_and_open_page
+end
+
+Then("I fill in {string} with my temp password") do |field|
+  fill_in field, with: @user.temp_password
 end
