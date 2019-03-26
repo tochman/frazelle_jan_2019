@@ -18,20 +18,12 @@
 		%p= notice
 		%p= alert
 		= yield
-		%section.bg-white.w-full
-			.container.mx-auto
-				.table.w-full
-					.block.sm:table-cell
-						%p.uppercase.text-sm.sm:mb-6 Social
-						%ul.list-reset.text-xs.mb-6
-							%li.mt-2.inline-block.mr-2.sm:block.sm:mr-0
-								%a.text-grey.hover:text-grey-dark{href: "https://www.facebook.com/"} Facebook
-							%li.mt-2.inline-block.mr-2.sm:block.sm:mr-0
-								%a.text-grey.hover:text-grey-dark{href: "https://twitter.com/"} Twitter
-					.block.sm:table-cell
-						%p.uppercase.text-sm.sm:mb-6 Find us here
-						%ul.list-reset.text-xs.mb-6
-							%li.mt-2.inline-block.mr-2.sm:block.sm:mr-0
-								%a.text-grey.hover:text-grey-dark{href: "https://github.com/CraftAcademy/Farazalle-The-Hut-Newsroom-JAN-2019-"} Github
-							%li.mt-2.inline-block.mr-2.sm:block.sm:mr-0
-								%a.text-grey.hover:text-grey-dark{href: "#"} Contact@thehubnews.com
+		%footer
+			%h2 Phone: 08-11 11 11
+			%h2 Email: contact@thehub.com
+			%h2 Find Us Here
+			%p
+			.icons
+				= link_to image_tag('facebook (1).png'), 'https://facebook.com'
+				= link_to image_tag('twitter (1).png'), 'https://twitter.com'
+				= link_to image_tag('gmail (1).png'), 'https://gmail.com'
