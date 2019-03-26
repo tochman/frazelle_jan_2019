@@ -1,5 +1,4 @@
 %h1 The Hub News
-#mapholder
 %ul.flex.justify-center
 	-@categories.each do |category|
 		%li.list-reset.p-4.text-lg=link_to t(category.name.capitalize), category_path(category)
