@@ -1,3 +1,4 @@
+@geolocation
 Feature: Visitor can see articles by location
 	As a user
 	In order to read relevant articles close to my location
@@ -15,13 +16,13 @@ Feature: Visitor can see articles by location
 			| Cinnamon Bun Festival starting this weekend | The time for the Cinnamon Bun Festival has come! Lots of tourists in Stockholm, police set on maximum alert! |       | free   | local    | Stockholm  |
 
 	Scenario: Visitor can see articles by location (Gothenburg)
-		Given I visit the "landing" page
-		And I am in "Gothenburg"
-		Then I should see "It looks like sunny days are coming to an end. Prepare your umbrella!" for "Rain is back in Gothenburg"
-		And I should not see "The time for the Cinnamon Bun Festival has come! Lots of tourists in Stockholm, police set on maximum alert!" for "Cinnamon Bun Festival starting this weekend"
+		Given I am in "Gothenburg", "SE"
+		When I visit the "landing" page
+		Then I should see "It looks like sunny days are coming to an end."
+		And I should not see "The time for the Cinnamon Bun Festival has come!"
 
 	Scenario: Visitor can see articles by location (Stockholm)
-		Given I visit the "landing" page
-		And I am in "Stockholm"
-		Then I should see "The time for the Cinnamon Bun Festival has come! Lots of tourists in Stockholm, police set on maximum alert!" for "Cinnamon Bun Festival starting this weekend"
-		And I should not see "Prepare your umbrellas" for "Rain is back in Gothenburg"
+		Given I am in "Stockholm", "SE"
+		When I visit the "landing" page
+		Then I should see "The time for the Cinnamon Bun Festival has come!"
+		And I should not see "It looks like sunny days are coming to an end."

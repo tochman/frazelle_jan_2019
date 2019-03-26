@@ -1,16 +1,13 @@
 class ArticlesController < ApplicationController
 	def index
-		@categories = Category.all
-
-		city = request.location.city
-
-		if (city == "Gothenburg")
-			@articles = Article.where(city: ["Gothenburg", nil])
-		elsif (city == "Stockholm")
-			@articles = Article.where(city: ["Stockholm", nil])
+		if request.location
+			city = request.location.city
+			@articles_by_category = Article.where(city: [city, nil]).group_by(&:category)
 		else
-			@articles = Article.where(city: [nil])
+			@articles_by_category = Article.where(city: nil).group_by(&:category)
 		end
+
+		@categories = Category.all
 	end
 
 	def show
