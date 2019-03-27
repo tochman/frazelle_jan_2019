@@ -7,21 +7,21 @@ Then("I should not see {string}") do |content|
 end
 
 Then("I should see an article image") do
-  expect(page).to have_selector(".article_image")
+	expect(page).to have_selector(".article_image")
 end
 
 Then("I should see {string} for {string}") do |expected_content, title|
 	@article = Article.find_by_title(title)
 	within("#article_#{@article.id}") do
-		expect(page).to have_content expected_content
-	end
+	expect(page).to have_content expected_content
+end
 end
 
 Then("I should not see {string} for {string}") do |expected_content, title|
 	@article = Article.find_by_title(title)
 	within("#article_#{@article.id}") do
-		expect(page).not_to have_content expected_content
-	end
+	expect(page).not_to have_content expected_content
+end
 end
 
 Then("I should be on subscription page") do
@@ -31,8 +31,8 @@ end
 Then("I should see {string} in {string}") do |expected_content, name|
 	category = Category.find_by_name(name)
 	within("#category_#{category.id}") do
-		expect(page).to have_content expected_content
-	end
+	expect(page).to have_content expected_content
+end
 end
 
 Then("I click {string}") do |element|
