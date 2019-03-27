@@ -5,6 +5,6 @@ Feature: Visitor can see a footer
 
 	Scenario:
 		Given I visit the "landing" page
-		And I should see "Phone"
+		Then I should see "Phone"
 		And I should see "Email"
 		And I should see "Find Us Here"
