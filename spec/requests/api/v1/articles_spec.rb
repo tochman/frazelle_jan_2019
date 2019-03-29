@@ -8,6 +8,7 @@ RSpec.describe Api::V1::ArticlesController, type: :request do
 		end
 		it 'returns a collection of articles' do
 			get '/api/v1/articles'
+			binding.pry
 			expect(response_json['articles'].count).to eq 5
 		end
 	end

@@ -16,6 +16,7 @@ gem 'devise'
 gem 'haml'
 gem 'stripe-rails'
 gem 'geocoder'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'factory_bot_rails'
